@@ -21,7 +21,7 @@ This project simulates and analyzes the dynamics of a Twin Rotor system as part 
 ## Requirements
 
 - MATLAB (R2024b)
-- Basic understanding of classical control systems
+- Basic understanding of classical control systems 
 
 ## Contributors
 
@@ -31,3 +31,6 @@ This project simulates and analyzes the dynamics of a Twin Rotor system as part 
 ## Notes
 
 This project is submitted for academic evaluation under the Classic Control Engineering course. Do not reuse without permission.
+
+## Milestone one report
+https://docs.google.com/document/d/e/2PACX-1vSwm-7vln92Kaphcs7VIme8lv3c1EJH7We-PZRoMAur6dBrrXzOq0rf-BFT7jWIqudmzTSTbun4APZu/pub
