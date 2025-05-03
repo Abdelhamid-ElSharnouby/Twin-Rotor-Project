@@ -20,7 +20,7 @@ This project simulates and analyzes the dynamics of a Twin Rotor system as part 
 
 ## Requirements
 
-- MATLAB (any recent version)
+- MATLAB (R2024b)
 - Basic understanding of classical control systems
 
 ## Contributors
