@@ -11,6 +11,7 @@ This project Models, simulates, and analyzes the dynamics of a Twin Rotor system
 - MATLAB simulation of open-loop system
 - Scenario testing with disturbances and parameter changes
 - Graphs and performance analysis
+- PID control of closed-loop system
 
 ## How to Run
 
