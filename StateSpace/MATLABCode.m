@@ -9,7 +9,7 @@ Lb = 0.3;
 mb = 75e-3;
 g = 9.81;
 l = 0.6;
-Kt = 100e-6;
+Kt = 1e-6;
 w0= 2;
 bt = 10e-3;
 J = 58.23e-3;
@@ -29,12 +29,16 @@ B= [1/Lm 0;
 
 C= [0 0 0 0 1 0 0 0];
 
-D= zeros(1,8);
+D= zeros(1,2);
 
 %System Response:
-[b,a] = ss2tf(A, B, C, D);
-sys= tf(b,a);
-t = 0:0.1:10;
+[b,a] = ss2tf(A, B, C, D, 1);
+G1= tf(b,a);
+[b,a] = ss2tf(A, B, C, D, 2);
+G2= tf(b,a); %MISO system, 2 tranfster functions included
+G=[G1 G2]; %Compine system transfer functions
+
+t = 0:0.1:100;
 % Initialize input: 2 columns for 2 inputs
 u = zeros(length(t), 2);
 
@@ -43,7 +47,7 @@ u(t >= 0 & t < 1, 1) = 0.02;
 
 % pulse on input 2
 u(t >= 0 & t < 1, 2) = 0.01;
-[y, t_out] = lsim(sys, u, t);
+[y, t_out] = lsim(G, u, t);
 
 % Plot
 figure;
