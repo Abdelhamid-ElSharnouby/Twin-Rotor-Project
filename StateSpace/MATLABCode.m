@@ -9,17 +9,17 @@ Lb = 0.3;
 mb = 75e-3;
 g = 9.81;
 l = 0.6;
-Kt = 1e-6;
+Kt = 100e-6;
 w0= 2;
 bt = 10e-3;
 J = 58.23e-3;
 %State Space:
-A = [-R/Lm,0,0,0,0,0,-Kv,0;
-     0,-R/Lm,0,0,0,0,0,-Kv;
+A = [-R/Lm,0,0,0,0,0,-Kv/Lm,0;
+     0,-R/Lm,0,0,0,0,0,-Kv/Lm;
      0,0,0,0,0,0,1,0;
      0,0,0,0,0,0,0,1;
      0,0,0,0,0,1,0,0;
-     0,0,0,0,-0.5*Lb*mb*g,0,(2*l*Kt*w0 - bt)/J,-(2*l*Kt*w0 - bt)/J;
+     0,0,0,0,-(0.5*Lb*mb*g)/J,0,(2*l*Kt*w0 - bt)/J,-(2*l*Kt*w0 - bt)/J;
      Ktm/Jm,0,0,0,0,0,-btm/Jm,0;
      0,Ktm/Jm,0,0,0,0,0,-btm/Jm];
 
@@ -29,11 +29,12 @@ B= [1/Lm 0;
 
 C= [0 0 0 0 1 0 0 0];
 
-D= 0;
+D= zeros(1,8);
 
 %System Response:
-sys = ss(A, B, C, D);
-t = 0:0.1:20000;
+[b,a] = ss2tf(A, B, C, D);
+sys= tf(b,a);
+t = 0:0.1:10;
 % Initialize input: 2 columns for 2 inputs
 u = zeros(length(t), 2);
 
