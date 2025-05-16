@@ -91,26 +91,25 @@ sysr_2 = balred(sys_2, reduced_order);
 % Convert reduced model back to transfer function (optional)
 G2_reduced = tf(sysr_2);
 
-% Compare step responses of original and reduced models
-% figure;
-% step( sys, sysr);
-% legend('Original G1','Reduced G1');
-% title('Step Response Comparison: Original vs Reduced Model');
-% grid on;
-% % 
-% G_reduced = [G1_reduced G2_reduced];
-% [y, t_out] = lsim(G_reduced, u, t);
-% figure;
-% plot(t_out, y, 'LineWidth', 1.5);
-% xlabel('Time (s)');
-% ylabel('Theta');
-% title('Open-Loop Response on Both Inputs - Reduced');
-% grid on;
+%% Compare step responses of original and reduced models
+figure;
+step( sys, sysr);
+legend('Original G1','Reduced G1');
+title('Step Response Comparison: Original vs Reduced Model');
+grid on;
+G_reduced = [G1_reduced G2_reduced];
+[y, t_out] = lsim(G_reduced, u, t);
+figure;
+plot(t_out, y, 'LineWidth', 1.5);
+xlabel('Time (s)');
+ylabel('Theta');
+title('Open-Loop Response on Both Inputs - Reduced');
+grid on;
 
 %% convert G to G_reduced
 G1 = G1_reduced;
 G2 = G2_reduced;
-G = G_reduced;
+G  =  G_reduced;
 
 %% Get coefficients
 [num, den] = tfdata(G1, 'v');
