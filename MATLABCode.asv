@@ -13,10 +13,10 @@ Kt = 100e-6;
 w0= 2;
 bt = 10e-3;
 J = 58.23e-3;
-ki=2;
-kp=8;
+ki=1;
+kp=50;
 kd=0;
-ref=-2;
+ref=1;
 % %% State Space:
 % A = [-R/Lm,0,0,0,0,0,0,-Kv/Lm;
 %      0,-R/Lm,0,0,0,0,-Kv/Lm,0;
